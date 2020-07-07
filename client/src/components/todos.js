@@ -34,6 +34,15 @@ const Todos = () => {
         })
     }
 
+    const handleEditSubmission = (id, editBody) => {
+        TodoService.editTodo(id, editBody).then(data =>{
+            console.log(data)
+        })
+        TodoService.getTodos().then(data =>{
+            setTodos(data.todos);
+        })
+    }
+
     const onSubmit = event => {
         event.preventDefault()
         TodoService.postTodo(todo).then(data => {
@@ -61,7 +70,7 @@ const Todos = () => {
             <ul>
                 {
                     todos.map( todo => {
-                        return <TodoItem key={todo._id} todo={todo} handleDelete={handleDelete} />
+                        return <TodoItem key={todo._id} todo={todo} handleEditSubmission={handleEditSubmission} handleDelete={handleDelete} />
                     })
                 }
             </ul>

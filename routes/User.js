@@ -102,31 +102,28 @@ userRouter.delete('/delete-todo/:id',passport.authenticate('jwt',{ session : fal
         if (err) {
             res.json("Unable to delete todo", error)
         } else {
-            let arr = req.user.todos
-            arr = arr.filter(e => e !== id)
-            req.user.todos = arr
             res.json("Todo deleted!")
         }
     })
 })
 
 
-// let arr = ['A', 'B', 'C'];
-// arr = arr.filter(e => e !== 'B');
-
-// userRouter.delete("/delete/:id", (req, res) => {
-//     let id = req.params.id
-//     User.findByIdAndRemove(id, (error, user) => {
-        // if (error) {
-        //     res.json("Unable to delete user", error)
-        // } else {
-        //     res.json("User deleted!")
-        // }
-//     })
-// })
-
-
 // edit a todo
+userRouter.post('/update-todo/:id',passport.authenticate('jwt',{ session : false }),(req,res)=> {
+    Todo.findById(req.params.id, (err, todo) => {
+        if (!todo)
+            res.status(404).send("Data is not found")
+        else
+            todo.name = req.body.name
+
+            todo.save().then(todo => {
+                res.json('Todo updated!')
+            })
+            .catch(err => {
+                res.status(400).send("Update not possible")
+            })
+    })
+})
 
 
 // retrieve existing todos
