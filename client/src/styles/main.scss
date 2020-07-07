@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.register-form, .login-form {
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+    justify-content: space-between;
+
+    button {
+        width: 150px;
+    }
+}
+

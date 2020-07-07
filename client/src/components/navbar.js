@@ -9,12 +9,15 @@ const Navbar = props => {
 
     const unauthenticatedNavbar = () => {
         return(
-            <div>
+            <div className="navbar">
                 <Link to="/">
                     Home
                 </Link>
                 <Link to="/todos">
                     Todos
+                </Link>
+                <Link to="/photos">
+                    Photos
                 </Link>
                 <Link to="/login">
                     Login
@@ -28,12 +31,15 @@ const Navbar = props => {
 
     const authenticatedNavbar = () => {
         return(
-            <div>
+            <div className="navbar">
                 <Link to="/">
                     Home
                 </Link>
                 <Link to="/todos">
                     Todos
+                </Link>
+                <Link to="/photos">
+                    My Photos
                 </Link>
                 {
                     user.role === "admin" ?
@@ -60,7 +66,7 @@ const Navbar = props => {
 
     return (
         <div>
-            <Link to="/">TayTay</Link>
+            <Link to="/">Logo Here</Link>
             {
                 !isAuthenticated ? unauthenticatedNavbar() : authenticatedNavbar()
             }

@@ -22,17 +22,17 @@ const Register = props => {
     }
 
     const onSubmit = event =>{
-        event.preventDefault();
+        event.preventDefault()
         AuthService.register(user).then(data=>{
-            const { message } = data;
-            setMessage(message);
-            resetForm();
+            const { message } = data
+            setMessage(message)
+            resetForm()
             if(!message.msgError){
                 timerID = setTimeout(()=>{
-                    props.history.push('/login');
+                    props.history.push('/login')
                 },2000)
             }
-        });
+        })
     }
 
     const resetForm = () => {
@@ -42,7 +42,7 @@ const Register = props => {
 
     return (
         <div>
-            <form onSubmit={onSubmit}>
+            <form className="register-form" onSubmit={onSubmit}>
                 <h3>Please Register</h3>
 
                 <label htmlFor="username">Username:</label>
