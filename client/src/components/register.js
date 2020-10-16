@@ -41,22 +41,27 @@ const Register = props => {
 
 
     return (
-        <div>
-            <form className="register-form" onSubmit={onSubmit}>
-                <h3>Please Register</h3>
+        <div className="form-wrapper">
+            <div className="content-wrapper">
+                <div className="header">REGISTER</div>
+                <div className="subheader">Please fill in the information below:</div>
+                <form  onSubmit={onSubmit}>
+                    
 
-                <label htmlFor="username">Username:</label>
-                <input type="text" value={user.username} name="username" onChange={onChange} placeholder="Enter username" />
+                    {/* <input type="text" value={user.firstname} name="firstname" onChange={onChange} placeholder="First Name" />
+                    <input type="text" value={user.lastname} name="lastname" onChange={onChange} placeholder="Last Name" /> */}
+                    <input type="text" value={user.username} name="username" onChange={onChange} placeholder="Email" />
 
-                <label htmlFor="password">Password:</label>
-                <input type="password" value={user.password}  name="password" onChange={onChange} placeholder="Enter password" />
+   
+                    <input type="password" value={user.password}  name="password" onChange={onChange} placeholder="Enter password" />
 
-                <label htmlFor="role">Role:</label>
-                <input type="text"  value={user.role} name="role" onChange={onChange} placeholder="Enter Role (admin or user)" />
+   
+                    <input type="text"  value={user.role} name="role" onChange={onChange} placeholder="Enter Role (admin or user)" />
 
-                <button type="submit">Register</button>
-            </form>
-            {message ? <Message message={message} /> : null }
+                    <button type="submit">CREATE MY ACCOUNT</button>
+                </form>
+                {message ? <Message message={message} /> : null }
+            </div>
         </div>
     )
 }

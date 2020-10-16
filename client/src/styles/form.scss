@@ -1,0 +1,90 @@
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+
+
+    .content-wrapper {
+        height: 300px;
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .header {
+            font-size: 25px;
+            font-family: "DIN Neuzeit Grotesk",sans-serif;
+            letter-spacing: 3px;
+            color: #454545;
+        }
+
+        .subheader {
+            color: #454545;
+            font-family: 'Domine' ,serif;
+            font-size: 14px;
+            padding: 30px;
+            letter-spacing: 1px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            width: 350px;
+            border: 1px solid #d3d3d3;
+            padding: 12px 15px;
+            background-color: white;
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-family: 'Domine' ,serif;
+            &::placeholder {
+                color: #b5b5b5;
+            }
+
+            &:focus {
+                border: 1px solid #7f7f7f;
+                outline: none;
+            }
+        }
+
+        button {
+            width: 382px;
+            color: white;
+            background-color: $theme;
+            border: none;
+            padding: 15px 15px;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+
+            &:hover {
+                background-color: #a5886f;
+            }
+        }
+
+        .register-wrapper {
+            font-family: 'Domine' ,serif;
+            font-size: 14px;
+     
+            display: flex;
+            .account {
+                padding-right: 6px;
+                color: #9d9d9d;
+            }
+            a {
+                text-decoration: none;
+                color: #3f3f3f;
+                transition: 0.2s;
+
+                &:hover {
+                    color: #9d9d9d;
+                }
+            }
+        }
+    }
+}

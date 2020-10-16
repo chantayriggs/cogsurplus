@@ -18,7 +18,7 @@ const UnprivateRoute = ({ component: Component, roles, ...rest }) => {
             // if the user is logged in, redirect to home page
             // else just render the component
             if(isAuthenticated)
-                return <Redirect to={{ pathname: "/home", state: {from: props.location }}} />
+                return <Redirect to={{ pathname: "/", state: {from: props.location }}} />
             return <Component {...props} />
         }} />
     );

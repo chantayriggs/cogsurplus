@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import AuthService from "../services/authService"
+import { Link } from "react-router-dom"
 import Message from "../components/message"
 import { AuthContext} from "../context/authContext"
 
@@ -24,7 +25,7 @@ const Login = props => {
                 authContext.setUser(user)
                 authContext.setIsAuthenticated(isAuthenticated)
                 // history comes from Router, pushes to chosen URL
-                props.history.push("/todos")
+                props.history.push("/")
             }
             else setMessage(message)
         })
@@ -33,19 +34,21 @@ const Login = props => {
 
 
     return (
-        <div>
+        <div className="form-wrapper">
+            <div className="content-wrapper">
+            <div className="header">LOGIN</div>
+            <div className="subheader">Please enter your email and password:</div>
             <form className="login-form" onSubmit={onSubmit}>
-                <h3>Please sign in</h3>
-
-                <label htmlFor="username">Username:</label>
-                <input type="text" name="username" onChange={onChange} placeholder="Enter username" />
-
-                <label htmlFor="password">Password:</label>
-                <input type="password" name="password" onChange={onChange} placeholder="Enter password" />
-
-                <button type="submit">Log In</button>
+                <input type="text" name="username" onChange={onChange} placeholder="Email" />
+                <input type="password" name="password" onChange={onChange} placeholder="Password" />
+                <button type="submit">LOGIN</button>
             </form>
+            <div className="register-wrapper">
+                <div className="account">Don't have an account?</div>
+                <Link to="/register">Create one</Link>
+            </div>
             {message ? <Message message={message} /> : null }
+            </div>
         </div>
     )
 }

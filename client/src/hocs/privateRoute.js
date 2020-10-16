@@ -19,7 +19,7 @@ const PrivateRoute = ({ component: Component, roles, ...rest }) => {
                 // checking to see if they have the correct roles. if they try to reach admin page, they'll
                 // be redirected to the home page
             if(!roles.includes(user.role))
-                return <Redirect to={{ pathname: "/home", state: {from: props.location }}} />
+                return <Redirect to={{ pathname: "/", state: {from: props.location }}} />
             return <Component {...props} />
         }} />
     );

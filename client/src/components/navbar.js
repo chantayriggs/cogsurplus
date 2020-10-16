@@ -2,6 +2,10 @@ import React, { useContext } from "react"
 import { Link } from "react-router-dom"
 import AuthService from "../services/authService"
 import { AuthContext } from "../context/authContext"
+import Logo from "../images/cogsur.png"
+import { User, ShoppingBag, Search } from "react-feather"
+
+import Admin from "./admin"
 
 const Navbar = props => {
 
@@ -10,21 +14,33 @@ const Navbar = props => {
     const unauthenticatedNavbar = () => {
         return(
             <div className="navbar">
-                <Link to="/">
-                    Home
-                </Link>
-                <Link to="/todos">
-                    Todos
-                </Link>
-                <Link to="/photos">
-                    Photos
-                </Link>
-                <Link to="/login">
-                    Login
-                </Link>
-                <Link to="/register">
-                    Register
-                </Link>
+                <div className="left">
+                    <div className="navbar-element">
+                        Disciplines
+                    </div>
+                    <div className="navbar-element">
+                        Collections
+                    </div>
+                    <div className="navbar-element">
+                        Sale
+                    </div>
+                </div>
+                <div className="center">
+                    <Link to="/">
+                        <img src={Logo} />
+                    </Link>
+                </div>
+                <div className="right">
+                    <Link className="navbar-element" to="/login">
+                        <User />
+                    </Link>
+                    <div className="navbar-element">
+                        <Search />
+                    </div>
+                    <div className="navbar-element">
+                        <ShoppingBag />
+                    </div>
+                </div>
             </div>
         )
     }
@@ -32,24 +48,43 @@ const Navbar = props => {
     const authenticatedNavbar = () => {
         return(
             <div className="navbar">
-                <Link to="/">
-                    Home
-                </Link>
-                <Link to="/todos">
-                    Todos
-                </Link>
-                <Link to="/photos">
-                    My Photos
-                </Link>
-                {
+                <div className="left">
+                    <div className="navbar-element">
+                        Disciplines
+                    </div>
+                    <div className="navbar-element">
+                        Collections
+                    </div>
+                    <div className="navbar-element">
+                        Sale
+                    </div>
+                </div>
+                <div className="center">
+                    <Link to="/">
+                        <img src={Logo} />
+                    </Link>
+                </div>
+                <div className="right">
+                    <Link className="navbar-element" to="/account">
+                        <User />
+                    </Link>
+                    <div className="navbar-element">
+                        <Search />
+                    </div>
+                    <div className="navbar-element">
+                        <ShoppingBag />
+                    </div>
+                    {
                     user.role === "admin" ?
-                    <Link to="/admin">
+                    <Link className="navbar-element" to="/admin">
                         Admin
                     </Link>
                     : null
-                }
-                <button onClick={onClickLogoutHandler}>Logout</button>
-
+                    }
+                    <div className="navbar-element">
+                        <button onClick={onClickLogoutHandler}>Logout</button>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -66,7 +101,6 @@ const Navbar = props => {
 
     return (
         <div>
-            <Link to="/">Logo Here</Link>
             {
                 !isAuthenticated ? unauthenticatedNavbar() : authenticatedNavbar()
             }

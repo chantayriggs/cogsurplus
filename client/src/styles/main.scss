@@ -1,18 +1,9 @@
-.navbar {
-    display: flex;
-    justify-content: space-between;
+body {
+    margin: 0px;
 }
 
-.register-form, .login-form {
-    border: solid black 1px;
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    height: 400px;
-    justify-content: space-between;
+$theme: #C3A284;
 
-    button {
-        width: 150px;
-    }
-}
 
+@import "./navbar.scss";
+@import "./form.scss";

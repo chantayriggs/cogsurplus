@@ -7,7 +7,7 @@ app.use(cookieParser())
 // bodyParser is now part of express, doesn't need to be installed separately
 app.use(bodyParser())
 
-mongoose.connect("mongodb://localhost:27017/mernauth", { useNewUrlParser : true, useUnifiedTopology: true }, () => {
+mongoose.connect("mongodb://localhost:27017/cogsurplus", { useNewUrlParser : true, useUnifiedTopology: true }, () => {
     console.log("Successfully connected to database")
 })
 
