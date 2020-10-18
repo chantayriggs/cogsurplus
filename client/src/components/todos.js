@@ -2,10 +2,10 @@ import React, { useState, useContext, useEffect } from 'react'
 import TodoItem from "./todoItem"
 import TodoService from "../services/todoService"
 import Message from "../components/message"
-import { AuthContext } from "../context/authContext"
+import { StateContext } from "../context/stateContext"
 
 const Todos = () => {
-    const authContext = useContext(AuthContext)
+    const stateContext = useContext(StateContext)
 
     const [todo, setTodo] = useState({ name: "" })
     const [todos, setTodos] = useState([])
@@ -56,8 +56,8 @@ const Todos = () => {
             }
             else if(message.msgBody === "UnAuthorized") {
                 setMessage(message)
-                authContext.setUser({ username: "", role: "" })
-                authContext.setIsAuthenticated(false)
+                stateContext.setUser({ username: "", role: "" })
+                stateContext.setIsAuthenticated(false)
             }
             else    
                 setMessage(message)

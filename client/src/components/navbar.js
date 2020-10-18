@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
 import { Link } from "react-router-dom"
-import { AuthContext } from "../context/authContext"
+import { StateContext } from "../context/stateContext"
 import Logo from "../images/cogsur.png"
 import { User, ShoppingBag, Search } from "react-feather"
 
 const Navbar = props => {
 
-    const { isAuthenticated, user } = useContext(AuthContext)
+    const { isAuthenticated, user, showCart, setShowCart } = useContext(StateContext)
 
     const unauthenticatedNavbar = () => {
         return(
@@ -68,7 +68,7 @@ const Navbar = props => {
                     <div className="navbar-element">
                         <Search />
                     </div>
-                    <div className="navbar-element">
+                    <div onClick={ () => setShowCart(!showCart)} className="navbar-element">
                         <ShoppingBag />
                     </div>
                     {

@@ -1,14 +1,19 @@
+import { use } from "passport"
 import React, { createContext, useState, useEffect } from "react"
 import AuthService from "../services/authService"
 
-// AuthContext gives us provider and consumer, form of global state
-export const AuthContext = createContext()
+// StateContext gives us provider and consumer, form of global state
+export const StateContext = createContext()
 
 // children meaning the components 
 export default ({ children }) => {
+    // AUTH
     const [user, setUser] = useState(null)
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
+
+    // CART
+    const [showCart, setShowCart] = useState(false)
 
     useEffect(() => {
         AuthService.isAuthenticated().then(data => {
@@ -24,9 +29,16 @@ export default ({ children }) => {
                 !isLoaded ? 
                 <h1>loading...</h1> 
                 : 
-                <AuthContext.Provider value={{ user, setUser, isAuthenticated, setIsAuthenticated }}>
+                <StateContext.Provider value={{ 
+                    user, 
+                    setUser, 
+                    isAuthenticated, 
+                    setIsAuthenticated,
+                    showCart,
+                    setShowCart
+                }}>
                     { children }
-                </AuthContext.Provider>
+                </StateContext.Provider>
             }
         </div>
     )

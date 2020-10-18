@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import AuthService from "../services/authService"
-import { AuthContext } from "../context/authContext"
+import { StateContext } from "../context/stateContext"
 
 const Account = () => {
 
-    const { setIsAuthenticated, setUser, user } = useContext(AuthContext)
+    const { setIsAuthenticated, setUser, user } = useContext(StateContext)
 
     const onClickLogoutHandler = () => {
         AuthService.logout().then(data => {

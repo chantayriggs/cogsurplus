@@ -13,6 +13,7 @@
 
         .mission {
             width: 400px;
+            padding-bottom: 50px;
 
             .social-media-wrapper {
                 padding-top: 25px;
@@ -28,6 +29,7 @@
 
         .subscribe {
             width: 265px;
+            padding: 0px 50px 50px 0px;
 
             input {
                 @include input-styles;
@@ -66,5 +68,37 @@
         @include dark-header-styles;
         font-weight: 500;
         font-size: 11px;
+        padding: 50px 0px;
+    }
+}
+
+
+@media (max-width: 1160px) {
+    .footer-wrapper {
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+
+            .for-media {
+                padding-right: 200px;
+            }
+
+            .more {
+                width: 200px;
+            }
+        }
+    }
+}
+
+@media (max-width: 860px) {
+    .footer-wrapper {
+    
+        .footer-content {
+            flex-direction: column;
+
+            .for-media {
+                padding-bottom: 50px;
+            }
+        }
     }
 }

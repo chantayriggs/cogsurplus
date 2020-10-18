@@ -22,7 +22,7 @@ const Footer = () => {
                     <input type="text" placeholder="Enter your email address" />
                     <button>Subscribe</button>
                 </div>
-                <div className="more">
+                <div className="more for-media">
                     <div className="header">learn more</div>
                     <div className="categories">
                         <Link className="category">Who We Are</Link>

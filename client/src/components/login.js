@@ -2,10 +2,10 @@ import React, { useState, useContext } from 'react'
 import AuthService from "../services/authService"
 import { Link } from "react-router-dom"
 import Message from "../components/message"
-import { AuthContext} from "../context/authContext"
+import { StateContext} from "../context/stateContext"
 
 const Login = props => {
-    const authContext = useContext(AuthContext)
+    const stateContext = useContext(StateContext)
 
     const [user, setUser] = useState({username: "", password: ""})
     const [message, setMessage] = useState(null)
@@ -22,8 +22,8 @@ const Login = props => {
         AuthService.login(user).then(data => {
             const { isAuthenticated, user, message } = data
             if(isAuthenticated) {
-                authContext.setUser(user)
-                authContext.setIsAuthenticated(isAuthenticated)
+                stateContext.setUser(user)
+                stateContext.setIsAuthenticated(isAuthenticated)
                 // history comes from Router, pushes to chosen URL
                 props.history.push("/")
             }

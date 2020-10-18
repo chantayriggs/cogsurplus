@@ -8,13 +8,18 @@
     .content-wrapper {
         display: flex;
         align-items: center;
-        width: 65%;
+        width: 70%;
         height: 220px;
 
         .logout {
             @include light-header-styles;
             font-size: 11px;
             padding-bottom: 20px;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+            &:hover {
+                color: $dark-gray;
+            }
         }
 
         h3 {
@@ -31,7 +36,7 @@
     }
 
     .orders-addresses-wrapper {
-        width: 65%;
+        width: 70%;
         display: grid;
         grid-template-columns: 2.7fr 1fr;
 
@@ -45,7 +50,7 @@
 
         .subheader {
             @include dark-subheader-styles;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .for-space {

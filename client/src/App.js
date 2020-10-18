@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
 import NavBar from "./components/navbar"
@@ -13,21 +13,32 @@ import Footer from "./components/footer"
 import PrivateRoute from "./hocs/privateRoute"
 import UnprivateRoute from "./hocs/unprivateRoute"
 
+import SlideCart from "./components/cart/slideCart"
+import Backdrop from "./components/cart/backdrop"
+
+import { StateContext } from "./context/stateContext"
+
 import "./styles/main.scss"
 
 const App = () => {
+
+  const stateContext = useContext(StateContext)
+
   return (
-    <Router>
-      <NavBar />
-      <Route exact path="/" component={Home} />
-      <UnprivateRoute path="/login" component={Login} />
-      <UnprivateRoute path="/register" component={Register} />
-      <PrivateRoute path="/todos" roles={["user", "admin"]} component={Todos} />
-      <PrivateRoute path="/admin" roles={["admin"]} component={Admin} />
-      <PrivateRoute path="/account" roles={["admin", "user"]} component={Account} />
-      <Footer />
-    </Router>
-    
+    <div>
+      <SlideCart />
+      { stateContext.showCart ? <Backdrop /> : null }
+      <Router>
+        <NavBar />
+        <Route exact path="/" component={Home} />
+        <UnprivateRoute path="/login" component={Login} />
+        <UnprivateRoute path="/register" component={Register} />
+        <PrivateRoute path="/todos" roles={["user", "admin"]} component={Todos} />
+        <PrivateRoute path="/admin" roles={["admin"]} component={Admin} />
+        <PrivateRoute path="/account" roles={["admin", "user"]} component={Account} />
+        <Footer />
+      </Router>
+    </div>
   )
 }
 

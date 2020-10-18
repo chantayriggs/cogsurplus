@@ -2,13 +2,13 @@
 
 import React, { useContext } from 'react'
 import { Route, Redirect } from "react-router-dom"
-import { AuthContext } from "../context/authContext"
+import { StateContext } from "../context/stateContext"
 
 
 // collect all the properties not contained within component and roles and store it within rest
 const PrivateRoute = ({ component: Component, roles, ...rest }) => {
 
-    const { isAuthenticated, user } = useContext(AuthContext)
+    const { isAuthenticated, user } = useContext(StateContext)
 
 
     return (
