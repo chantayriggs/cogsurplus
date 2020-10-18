@@ -1,0 +1,93 @@
+@mixin input-styles {
+    border: 1px solid #d3d3d3;
+    padding: 12px 15px;
+    font-size: 15px;
+    font-family: $subheader-font;
+    &::placeholder {
+        color: #b5b5b5;
+    }
+
+    &:focus {
+        border: 1px solid #7f7f7f;
+        outline: none;
+    }
+}
+
+@mixin center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin main-button {
+    text-transform: uppercase;
+    color: white;
+    background-color: $accent-color;
+    font-family: $header-font;
+    border: none;
+    padding: 18px 0px 14px 0px;
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    @include center-flex;
+
+    &:hover {
+        background-color: #a5886f;
+    }
+}
+
+@mixin center-vertical-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin link-dark-to-light {
+    text-decoration: none;
+    color: $dark-gray;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        color: $light-gray;
+    }
+}
+
+@mixin link-light-to-dark {
+    text-decoration: none;
+    color: $light-gray;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        color: $dark-gray;
+    }
+}
+
+@mixin dark-header-styles {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $dark-gray;
+    font-family: $header-font;
+}
+
+@mixin light-header-styles {
+    text-transform: uppercase;
+    font-family: $header-font;
+    font-weight: 400;
+    color: $light-gray;
+    letter-spacing: 2px;
+}
+
+@mixin dark-subheader-styles {
+    color: $dark-gray;
+    font-size: 14px;
+    font-family: $subheader-font;
+}
+
+@mixin light-subheader-styles {
+    color: $light-gray;
+    font-size: 14px;
+    font-family: $subheader-font;
+}
+

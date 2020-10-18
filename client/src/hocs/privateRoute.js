@@ -1,6 +1,6 @@
 // to protect components you need to be logged in to see
 
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 import { Route, Redirect } from "react-router-dom"
 import { AuthContext } from "../context/authContext"
 
@@ -22,8 +22,8 @@ const PrivateRoute = ({ component: Component, roles, ...rest }) => {
                 return <Redirect to={{ pathname: "/", state: {from: props.location }}} />
             return <Component {...props} />
         }} />
-    );
-};
+    )
+}
 
-export default PrivateRoute;
+export default PrivateRoute
 

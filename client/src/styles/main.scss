@@ -2,8 +2,9 @@ body {
     margin: 0px;
 }
 
-$theme: #C3A284;
-
-
+@import "./variables.scss";
+@import "./mixins.scss";
 @import "./navbar.scss";
 @import "./form.scss";
+@import "./footer.scss";
+@import "./account.scss";

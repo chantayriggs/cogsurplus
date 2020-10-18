@@ -1,6 +1,6 @@
 // this is to make sure that when you are logged in, you cannot access the login or register components
 
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 import { Route, Redirect } from "react-router-dom"
 import { AuthContext } from "../context/authContext"
 
@@ -21,7 +21,7 @@ const UnprivateRoute = ({ component: Component, roles, ...rest }) => {
                 return <Redirect to={{ pathname: "/", state: {from: props.location }}} />
             return <Component {...props} />
         }} />
-    );
-};
+    )
+}
 
-export default UnprivateRoute;
+export default UnprivateRoute

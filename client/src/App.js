@@ -8,6 +8,7 @@ import Register from "./components/register"
 import Admin from "./components/admin"
 import Todos from "./components/todos"
 import Account from "./components/account"
+import Footer from "./components/footer"
 
 import PrivateRoute from "./hocs/privateRoute"
 import UnprivateRoute from "./hocs/unprivateRoute"
@@ -24,7 +25,7 @@ const App = () => {
       <PrivateRoute path="/todos" roles={["user", "admin"]} component={Todos} />
       <PrivateRoute path="/admin" roles={["admin"]} component={Admin} />
       <PrivateRoute path="/account" roles={["admin", "user"]} component={Account} />
-      
+      <Footer />
     </Router>
     
   )

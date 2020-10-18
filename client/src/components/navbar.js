@@ -1,15 +1,12 @@
 import React, { useContext } from "react"
 import { Link } from "react-router-dom"
-import AuthService from "../services/authService"
 import { AuthContext } from "../context/authContext"
 import Logo from "../images/cogsur.png"
 import { User, ShoppingBag, Search } from "react-feather"
 
-import Admin from "./admin"
-
 const Navbar = props => {
 
-    const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext)
+    const { isAuthenticated, user } = useContext(AuthContext)
 
     const unauthenticatedNavbar = () => {
         return(
@@ -81,22 +78,12 @@ const Navbar = props => {
                     </Link>
                     : null
                     }
-                    <div className="navbar-element">
-                        <button onClick={onClickLogoutHandler}>Logout</button>
-                    </div>
                 </div>
             </div>
         )
     }
 
-    const onClickLogoutHandler = () => {
-        AuthService.logout().then(data => {
-            if(data.success) {
-                setUser(data.user)
-                setIsAuthenticated(false)
-            }
-        })
-    }
+
 
 
     return (
