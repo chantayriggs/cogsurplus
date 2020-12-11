@@ -1,0 +1,94 @@
+.side-menu { 
+    height: 100%;
+    background: white;
+    position: fixed;
+    width: 350px;
+    z-index: 200;
+    box-shadow: 1px 0px 7px rgba(0,0,0,0.5); 
+    transform: translateX(-100%);
+    transition: transform 0.7s ease-out;
+}
+.side-menu.open {
+    transform: translateX(0);
+}
+
+.backdrop {
+    transition: 1s;
+}
+
+.menu-backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 100;
+    top: 0;
+    right: 0;
+    transition: transform .7s ease-out;
+}
+
+
+.cart-wrapper {
+    .cart-header-wrapper {
+        @include dark-header-styles;
+        font-weight: 600;
+        border-bottom: 1px solid $border-color;
+        height: 60px;
+        @include center-flex;
+
+        .cart-header {
+            width: 85%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            i {
+                -webkit-text-stroke: 1px white;
+            }
+
+        }
+    }
+    .cart-content {
+        .empty-cart {
+            @include dark-header-styles;
+            font-weight: 600;
+            font-size: .8em;
+            height: 300px;
+            @include center-flex;
+        }
+    }
+    .bubble-wrapper {
+        @include center-vertical-flex;
+
+        .bubble {
+            margin-top: 20px;
+            border: 1px solid $border-color;
+            width: 93%;
+            height: 120px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            transition: 0.1s;
+            i {
+                padding-left: 30px;
+                font-size: 60px;
+                -webkit-text-stroke: 4px white;
+                transition: 0.1s;
+            }
+            .bubble-description {
+                @include dark-header-styles;
+                font-weight: 600;
+                font-size: .8em;
+                padding-left: 30px;
+            }
+
+            &:hover {
+                background-color: $border-color;
+                cursor: pointer;
+                i {
+                    -webkit-text-stroke: 4px $border-color;
+                }
+            }
+        }
+    }
+}

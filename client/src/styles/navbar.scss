@@ -1,3 +1,9 @@
+.scrolled{
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
 .navbar {
     @include dark-header-styles;
     font-size: 12px;
@@ -8,6 +14,10 @@
     align-items: center;
     height: 60px;
     border-bottom: 1px solid $border-color;
+
+    .menu {
+        display: none;
+    }
 
     .navbar-element {
         padding-right: 25px;
@@ -21,6 +31,11 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+
+        .for-admin {
+            display: flex;
+            align-items: center;
+        }
     }
 
     .center img {
@@ -34,4 +49,34 @@
         color: $icon-color;
         font-size: 18px;
     }
+}
+
+@media (max-width: 1000px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        .left {
+            display: none;
+        }
+    
+        .menu {
+            display: block;
+        }
+    }
+
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        .user {
+            display: none;
+        }
+        .center {
+
+            img {
+                height: 15px;
+            }
+        }
+    }
+
 }

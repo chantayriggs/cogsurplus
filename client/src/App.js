@@ -13,8 +13,12 @@ import Footer from "./components/footer"
 import PrivateRoute from "./hocs/privateRoute"
 import UnprivateRoute from "./hocs/unprivateRoute"
 
+import Cart from "./components/cart/cart"
 import SlideCart from "./components/cart/slideCart"
 import Backdrop from "./components/cart/backdrop"
+
+import Menu from "./components/sideMenu/menu"
+import MenuBackdrop from "./components/sideMenu/menuBackdrop"
 
 import { StateContext } from "./context/stateContext"
 
@@ -26,6 +30,8 @@ const App = () => {
 
   return (
     <div>
+      <Menu />
+      { stateContext.showSideMenu ? <MenuBackdrop /> : null }
       <SlideCart />
       { stateContext.showCart ? <Backdrop /> : null }
       <Router>
@@ -33,6 +39,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <UnprivateRoute path="/login" component={Login} />
         <UnprivateRoute path="/register" component={Register} />
+        <UnprivateRoute path="/cart" component={Cart} />
         <PrivateRoute path="/todos" roles={["user", "admin"]} component={Todos} />
         <PrivateRoute path="/admin" roles={["admin"]} component={Admin} />
         <PrivateRoute path="/account" roles={["admin", "user"]} component={Account} />
