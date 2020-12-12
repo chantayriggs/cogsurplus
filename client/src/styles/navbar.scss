@@ -15,6 +15,15 @@
     height: 60px;
     border-bottom: 1px solid $border-color;
 
+    .nav-link {
+        cursor: pointer;
+        transition: .7s;
+    }
+
+    .active {
+
+    }
+
     .menu {
         display: none;
     }

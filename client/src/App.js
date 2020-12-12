@@ -9,6 +9,7 @@ import Admin from "./components/admin"
 import Todos from "./components/todos"
 import Account from "./components/account"
 import Footer from "./components/footer"
+import CollectionDropdown from "./components/collectionDropdown"
 
 import PrivateRoute from "./hocs/privateRoute"
 import UnprivateRoute from "./hocs/unprivateRoute"
@@ -36,6 +37,7 @@ const App = () => {
       { stateContext.showCart ? <Backdrop /> : null }
       <Router>
         <NavBar />
+        { stateContext.showCollectionDropdown ? <CollectionDropdown /> : null }
         <Route exact path="/" component={Home} />
         <UnprivateRoute path="/login" component={Login} />
         <UnprivateRoute path="/register" component={Register} />
@@ -43,6 +45,7 @@ const App = () => {
         <PrivateRoute path="/todos" roles={["user", "admin"]} component={Todos} />
         <PrivateRoute path="/admin" roles={["admin"]} component={Admin} />
         <PrivateRoute path="/account" roles={["admin", "user"]} component={Account} />
+
         <Footer />
       </Router>
     </div>

@@ -1,0 +1,48 @@
+.collection-menu-wrapper {
+    position: absolute;
+    background-color: white;
+    width: 100vw;
+    border-bottom: 1px solid $border-color;
+
+}
+
+.collection-menu {
+    display: flex;
+    padding: 30px 100px;
+
+    img {
+        height: 300px;
+        object-fit: cover;
+        padding: 53px 0px 53px 50px;
+    }
+}
+
+.menu-dropdown {
+    text-transform: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid $border-color;
+    font-family: $subheader-font;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 23px;
+}
+
+
+.menu-column {
+    padding: 23px 40px 10px 30px;
+    width: 150px;
+
+    .menu-header {
+        @include light-header-styles;
+        padding-bottom: 20px;
+        font-size: .7em;
+    }
+
+    .menu-type {
+        @include link-dark-to-light;
+        letter-spacing: 1px;
+        padding-bottom: 15px;
+    }
+}
+

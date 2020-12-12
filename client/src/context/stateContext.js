@@ -1,12 +1,17 @@
 import { use } from "passport"
 import React, { createContext, useState, useEffect } from "react"
 import AuthService from "../services/authService"
+import mockProducts from "../mockProducts"
 
 // StateContext gives us provider and consumer, form of global state
 export const StateContext = createContext()
 
 // children meaning the components 
 export default ({ children }) => {
+
+    // DROPDOWN
+    const [showCollectionDropdown, setShowCollectionDropdown] = useState(false)
+
     // AUTH
     const [user, setUser] = useState(null)
     const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -15,6 +20,9 @@ export default ({ children }) => {
     // PRODUCTS
 
     const [allProducts, setAllProducts] = useState(null)
+    const [collections, setCollections] = useState([])
+    const [disciplines, setDisciplines] = useState([])
+    const [broadTypes, setBroadTypes] = useState([])
 
     // CART
     const [showCart, setShowCart] = useState(false)
@@ -29,6 +37,16 @@ export default ({ children }) => {
             setUser(data.user)
             setIsAuthenticated(data.isAuthenticated)
             setIsLoaded(true)
+        })
+        setAllProducts(mockProducts)
+        mockProducts.map( product => {
+            if (!collections.includes(product.collection)) collections.push(product.collection)
+        })
+        mockProducts.map( product => {
+            if (!broadTypes.includes(product.collection.broadType)) broadTypes.push(product.collection.broadType)
+        })
+        mockProducts.map( product => {
+            if (!disciplines.includes(product.discipline)) disciplines.push(product.discipline)
         })
     }, [])
 
@@ -52,7 +70,15 @@ export default ({ children }) => {
                     total,
                     setTotal,
                     allProducts,
-                    setAllProducts
+                    setAllProducts,
+                    showCollectionDropdown,
+                    setShowCollectionDropdown,
+                    collections,
+                    setCollections,
+                    disciplines,
+                    setDisciplines,
+                    broadTypes,
+                    setBroadTypes
                 }}>
                     { children }
                 </StateContext.Provider>
