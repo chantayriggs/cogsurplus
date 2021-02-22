@@ -19,6 +19,18 @@
             padding: 30px;
         }
 
+        .errorMessage {
+            color: #ef4e39;
+            background-color: #f4bab2;
+            height: 50px;
+            margin-bottom: 20px;
+            width: 350px;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         form {
             display: flex;
             flex-direction: column;

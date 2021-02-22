@@ -1,9 +1,15 @@
 import React, { useContext, useEffect } from 'react'
+import { Link } from "react-router-dom"
 import { StateContext } from "../context/stateContext"
 
 const CollectionDropdown = () => {
 
     const stateContext = useContext(StateContext)
+
+    const handleTypeClick = type => {
+        stateContext.setShowCollectionDropdown(false)
+        stateContext.setCurrentType(type)
+    }
 
 
     useEffect( () => {
@@ -23,7 +29,11 @@ const CollectionDropdown = () => {
                                 stateContext.collections.map( collection => (
                                     <div>
                                         { collection.broadType ===  mapBroadType ? 
-                                        <div  className="menu-type"  >{collection.type}</div>
+                                    <Link 
+                                        onClick={() => handleTypeClick(collection.type)}  
+                                        className="menu-type" 
+                                        to={`/collection/${(collection.type).toLowerCase().replace(" ", "-")}`}
+                                    >{collection.type}</Link>
                                     
                                     : null}
                                     </div>

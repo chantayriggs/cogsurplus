@@ -15,7 +15,7 @@ export default {
             if(res.status !== 401) 
                 return res.json().then( data => data)
             else  
-                return { isAuthenticated: false, user: { username: "", role: "" }}
+                return { isAuthenticated: false, user: { username: "", role: "" }, message: "Incorrect email or password"}
         })
 
     },

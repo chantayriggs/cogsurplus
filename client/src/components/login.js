@@ -38,6 +38,9 @@ const Login = props => {
             <div className="content-wrapper">
             <div className="header">LOGIN</div>
             <div className="subheader">Please enter your e-mail and password:</div>
+            { message === null ?  null : 
+                <div className="errorMessage">{message}</div>
+            }
             <form className="login-form" onSubmit={onSubmit}>
                 <input id="email" type="text" name="username" onChange={onChange} placeholder="Email" />
                 <input type="password" name="password" onChange={onChange} placeholder="Password" />

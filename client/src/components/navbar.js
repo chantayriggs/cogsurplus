@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { StateContext } from "../context/stateContext"
+import stateContext, { StateContext } from "../context/stateContext"
 import Logo from "../images/cogsur.png"
 import { User, ShoppingBag, Search, Menu } from "react-feather"
 
@@ -19,7 +19,9 @@ const Navbar = () => {
         setShowSideMenu,
         disciplines,
         showCollectionDropdown,
-        setShowCollectionDropdown
+        setShowCollectionDropdown,
+        setCurrentDiscipline,
+        setCurrentSale
     } = useContext(StateContext)
 
     const mouseOverMenu = (menu) =>  {
@@ -41,10 +43,19 @@ const Navbar = () => {
             setShowCollectionDropdown(false)
     }
 
+    const handleDisciplineClick = discipline => {
+        setCurrentDiscipline(discipline)
+        setShowDisciplines(false)
+    }
+
+    const handleSaleClick = sale => {
+        setCurrentSale(sale)
+        setShowSales(false)
+    }
+
     useEffect( () => {
-        console.log("got here")
         if (showCollectionDropdown) {
-            setShowDisciplines(false)
+            setShowDisciplines(false) 
             setShowSales(false)
         }
     }, [showCollectionDropdown])
@@ -63,7 +74,14 @@ const Navbar = () => {
                     { showDisciplines ?
                         <div onMouseLeave={() => mouseLeaveMenu()} className="menu-dropdown menu-column">
                             { disciplines.map( discipline => (
-                                <div className="menu-type" >{discipline}</div>
+                                <Link 
+                                onClick={() => handleDisciplineClick(discipline) }  
+                                className="menu-type" 
+                                to={`/discipline/${(discipline).toLowerCase().replace(" ", "-")}`}
+                                >
+                                    <div className="menu-type" >{discipline}</div>
+                                </Link>
+                                
                             )) }
                         </div>
                     : null }
@@ -79,8 +97,20 @@ const Navbar = () => {
                     <div className="nav-link">Sale</div>
                     { showSales ?
                         <div onMouseLeave={() => mouseLeaveMenu()} className="menu-dropdown menu-column">
-                            <div className="menu-type">Sale 1</div>
-                            <div className="menu-type">Sale 2</div>
+                                <Link 
+                                onClick={() => handleSaleClick("Sale 1") }  
+                                className="menu-type" 
+                                to={"sale/sale-1"}
+                                >
+                                    <div className="menu-type" >Sale 1</div>
+                                </Link>
+                                <Link 
+                                onClick={() => handleSaleClick("Sale 2") }  
+                                className="menu-type" 
+                                to={"sale/sale-2"}
+                                >
+                                    <div className="menu-type" >Sale 2</div>
+                                </Link>
                         </div>
                     : null }
                 </div>

@@ -10,6 +10,7 @@ import Todos from "./components/todos"
 import Account from "./components/account"
 import Footer from "./components/footer"
 import CollectionDropdown from "./components/collectionDropdown"
+import CollectionDetail from "./components/collectionDetail"
 
 import PrivateRoute from "./hocs/privateRoute"
 import UnprivateRoute from "./hocs/unprivateRoute"
@@ -22,8 +23,11 @@ import Menu from "./components/sideMenu/menu"
 import MenuBackdrop from "./components/sideMenu/menuBackdrop"
 
 import { StateContext } from "./context/stateContext"
+import DisciplineDetail from "./components/disciplineDetail"
+import SaleDetail from "./components/saleDetail"
 
 import "./styles/main.scss"
+
 
 const App = () => {
 
@@ -38,6 +42,33 @@ const App = () => {
       <Router>
         <NavBar />
         { stateContext.showCollectionDropdown ? <CollectionDropdown /> : null }
+        <Route
+            path="/collection/:slug"
+            component={CollectionDetail}
+            render={props => (
+              <CollectionDetail
+                {...props}
+              />
+            )}
+          />
+          <Route
+            path="/discipline/:slug"
+            component={DisciplineDetail}
+            render={props => (
+              <DisciplineDetail
+                {...props}
+              />
+            )}
+          />
+          <Route
+            path="/sale/:slug"
+            component={SaleDetail}
+            render={props => (
+              <SaleDetail
+                {...props}
+              />
+            )}
+          />
         <Route exact path="/" component={Home} />
         <UnprivateRoute path="/login" component={Login} />
         <UnprivateRoute path="/register" component={Register} />
@@ -45,8 +76,8 @@ const App = () => {
         <PrivateRoute path="/todos" roles={["user", "admin"]} component={Todos} />
         <PrivateRoute path="/admin" roles={["admin"]} component={Admin} />
         <PrivateRoute path="/account" roles={["admin", "user"]} component={Account} />
-
         <Footer />
+
       </Router>
     </div>
   )

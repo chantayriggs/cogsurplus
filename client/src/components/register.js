@@ -45,6 +45,9 @@ const Register = props => {
             <div className="content-wrapper">
                 <div className="header">REGISTER</div>
                 <div className="subheader">Please fill in the information below:</div>
+                {/* { message === null ?  null : 
+                    <div className="errorMessage">{message}</div>
+                } */}
                 <form  onSubmit={onSubmit}>
                     
 

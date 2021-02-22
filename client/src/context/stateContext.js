@@ -32,6 +32,12 @@ export default ({ children }) => {
     //SIDE MENU
     const [showSideMenu, setShowSideMenu] = useState(false)
 
+    //  Detail Pages
+
+    const [currentType, setCurrentType] = useState(null)
+    const [currentDiscipline, setCurrentDiscipline] = useState(null)
+    const [currentSale, setCurrentSale] = useState(null)
+
     useEffect(() => {
         AuthService.isAuthenticated().then(data => {
             setUser(data.user)
@@ -78,7 +84,14 @@ export default ({ children }) => {
                     disciplines,
                     setDisciplines,
                     broadTypes,
-                    setBroadTypes
+                    setBroadTypes,
+                    currentType,
+                    setCurrentType,
+                    currentDiscipline,
+                    setCurrentDiscipline,
+                    currentSale,
+                    setCurrentSale
+
                 }}>
                     { children }
                 </StateContext.Provider>
